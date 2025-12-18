@@ -1,6 +1,6 @@
 {
   "name": "@nshiab/journalism-web-scraping",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "exports": {
     ".": "./src/index.ts"
   },
@@ -38,5 +38,7 @@
       "src/**/*.ts"
     ]
   },
-  "allowScripts": ["npm:playwright-chromium@1"]
+  "allowScripts": [
+    "npm:playwright-chromium@1"
+  ]
 }
