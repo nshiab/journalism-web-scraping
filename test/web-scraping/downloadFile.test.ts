@@ -8,7 +8,7 @@ if (!existsSync("./test/output")) {
 
 Deno.test("should download a file", async function () {
   await downloadFile(
-    "https://raw.githubusercontent.com/nshiab/journalism/main/test/data/data.json",
+    "https://raw.githubusercontent.com/nshiab/journalism-web-scraping/main/test/data/data.json",
     "./test/output/data.json",
   );
   const originalData = JSON.parse(
