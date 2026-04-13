@@ -77,12 +77,12 @@ async function getHtmlTable(
 
 ### Parameters
 
-- **`url`**: - The URL of the web page containing the HTML table.
-- **`options`**: - An optional object to specify how to locate the table.
-- **`options.selector`**: - A CSS selector string to identify the target table
-  on the page. If not provided, the function will look for the first `<table>`
+- **`url`**: The URL of the web page containing the HTML table.
+- **`options`**: An optional object to specify how to locate the table.
+- **`options.selector`**: A CSS selector string to identify the target table on
+  the page. If not provided, the function will look for the first `<table>`
   element.
-- **`options.index`**: - The 0-based index of the table to select if multiple
+- **`options.index`**: The 0-based index of the table to select if multiple
   tables match the `selector`. Defaults to `0`.
 
 ### Returns
@@ -131,16 +131,16 @@ async function getStatCanTable(
 
 ### Parameters
 
-- **`pid`**: - The Product ID (PID) of the Statistics Canada table. This is a
+- **`pid`**: The Product ID (PID) of the Statistics Canada table. This is a
   string of up to 8 digits. If a longer string is provided, it will be truncated
   to the first 8 characters.
-- **`options`**: - Optional settings to customize the data retrieval.
-- **`options.lang`**: - The language of the table data. Can be 'en' for English
-  or 'fr' for French. Defaults to 'en'.
-- **`options.returnRawCSV`**: - A boolean indicating whether to return the raw
-  CSV data as a string instead of a parsed array of objects. Useful for direct
-  file storage or custom parsing. Defaults to `false`.
-- **`options.debug`**: - A boolean indicating whether to enable debug logging to
+- **`options`**: Optional settings to customize the data retrieval.
+- **`options.lang`**: The language of the table data. Can be 'en' for English or
+  'fr' for French. Defaults to 'en'.
+- **`options.returnRawCSV`**: A boolean indicating whether to return the raw CSV
+  data as a string instead of a parsed array of objects. Useful for direct file
+  storage or custom parsing. Defaults to `false`.
+- **`options.debug`**: A boolean indicating whether to enable debug logging to
   the console, showing fetch URLs and other process details. Defaults to
   `false`.
 
