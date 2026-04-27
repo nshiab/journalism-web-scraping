@@ -1,11 +1,12 @@
-import { chromium } from "playwright-chromium";
 import { load } from "cheerio";
 import { csvFormatRow, csvParse, type DSVRowArray } from "d3-dsv";
 
 /**
- * Extracts tabular data from an HTML table on a given URL and returns it as an array of objects. This function is particularly useful for scraping structured data from web pages.
+ * Extracts tabular data from an HTML table from a given URL or an HTML string and returns it as an array of objects. This function is particularly useful for scraping structured data from web pages.
  *
- * @param url - The URL of the web page containing the HTML table.
+ * If the page uses JavaScript to render the table, you should fetch the HTML first using a tool like Playwright or Puppeteer and then pass the HTML string to this function.
+ *
+ * @param urlOrHtml - The URL of the web page containing the HTML table or the HTML string itself.
  * @param options - An optional object to specify how to locate the table.
  * @param options.selector - A CSS selector string to identify the target table on the page. If not provided, the function will look for the first `<table>` element.
  * @param options.index - The 0-based index of the table to select if multiple tables match the `selector`. Defaults to `0`.
@@ -13,7 +14,7 @@ import { csvFormatRow, csvParse, type DSVRowArray } from "d3-dsv";
  *
  * @example
  * ```ts
- * // Extract data from the first table on a page
+ * // Extract data from the first table on a page via URL
  * const data = await getHtmlTable("https://example.com/data");
  * console.log(data[0]); // Accessing data from the first row
  * ```
@@ -28,23 +29,42 @@ import { csvFormatRow, csvParse, type DSVRowArray } from "d3-dsv";
  * });
  * console.table(specificTableData);
  * ```
+ *
+ * @example
+ * ```ts
+ * // Extract data from an HTML string
+ * const html = "<table><tr><th>Header</th></tr><tr><td>Data</td></tr></table>";
+ * const dataFromHtml = await getHtmlTable(html);
+ * console.log(dataFromHtml);
+ * ```
  */
 
 export default async function getHtmlTable(
-  url: string,
+  urlOrHtml: string,
   options: {
     selector?: string;
     index?: number;
   } = {},
 ): Promise<DSVRowArray<string>> {
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
-  await page.goto(url, {
-    waitUntil: "networkidle",
-    timeout: 5000,
-  });
-  const html = await page.locator("body").innerHTML();
-  await browser.close();
+  let html = "";
+  if (
+    urlOrHtml.startsWith("http://") || urlOrHtml.startsWith("https://")
+  ) {
+    const response = await fetch(urlOrHtml, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+      },
+    });
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch ${urlOrHtml}: ${response.status} ${response.statusText}`,
+      );
+    }
+    html = await response.text();
+  } else {
+    html = urlOrHtml;
+  }
 
   const $ = load(html);
 
