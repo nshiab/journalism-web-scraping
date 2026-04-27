@@ -142,10 +142,24 @@ Deno.test("should return an array of objects from an HTML table with an index op
     },
   ]);
 });
-Deno.test("should return data from a website that is loading javascript", async () => {
-  const data = await getHtmlTable(
-    "https://tracreports.org/immigration/detentionstats/facilities.html",
-    { selector: ".table" },
-  );
-  assertEquals(data.length >= 10, true);
+Deno.test("should return data from an HTML string", async () => {
+  const html = `
+    <table>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+      </tr>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+      </tr>
+    </table>
+  `;
+  const data = await getHtmlTable(html);
+  assertEquals(data, [
+    {
+      "Header 1": "Data 1",
+      "Header 2": "Data 2",
+    },
+  ]);
 });

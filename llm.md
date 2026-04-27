@@ -62,22 +62,27 @@ console.log("Image downloaded successfully!");
 
 ## getHtmlTable
 
-Extracts tabular data from an HTML table on a given URL and returns it as an
-array of objects. This function is particularly useful for scraping structured
-data from web pages.
+Extracts tabular data from an HTML table from a given URL or an HTML string and
+returns it as an array of objects. This function is particularly useful for
+scraping structured data from web pages.
+
+If the page uses JavaScript to render the table, you should fetch the HTML first
+using a tool like Playwright or Puppeteer and then pass the HTML string to this
+function.
 
 ### Signature
 
 ```typescript
 async function getHtmlTable(
-  url: string,
+  urlOrHtml: string,
   options?: { selector?: string; index?: number },
 ): Promise<DSVRowArray<string>>;
 ```
 
 ### Parameters
 
-- **`url`**: The URL of the web page containing the HTML table.
+- **`urlOrHtml`**: The URL of the web page containing the HTML table or the HTML
+  string itself.
 - **`options`**: An optional object to specify how to locate the table.
 - **`options.selector`**: A CSS selector string to identify the target table on
   the page. If not provided, the function will look for the first `<table>`
@@ -93,7 +98,7 @@ where each row is an object with column headers as keys.
 ### Examples
 
 ```ts
-// Extract data from the first table on a page
+// Extract data from the first table on a page via URL
 const data = await getHtmlTable("https://example.com/data");
 console.log(data[0]); // Accessing data from the first row
 ```
@@ -106,6 +111,13 @@ const specificTableData = await getHtmlTable("https://example.com/data", {
   index: 3,
 });
 console.table(specificTableData);
+```
+
+```ts
+// Extract data from an HTML string
+const html = "<table><tr><th>Header</th></tr><tr><td>Data</td></tr></table>";
+const dataFromHtml = await getHtmlTable(html);
+console.log(dataFromHtml);
 ```
 
 ## getStatCanTable
