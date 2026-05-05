@@ -6,7 +6,8 @@ of the [journalism library](https://github.com/nshiab/journalism).
 
 The library is available on
 [JSR](https://jsr.io/@nshiab/journalism-web-scraping) with its
-[documentation](https://jsr.io/@nshiab/journalism-web-scraping/doc).
+[documentation](https://jsr.io/@nshiab/journalism-web-scraping/doc) and on
+[NPM](https://www.npmjs.com/package/@nshiab/journalism-web-scraping).
 
 The documentation is also available as the markdown file
 [llm.md](https://github.com/nshiab/journalism-web-scraping/blob/main/llm.md),
@@ -27,13 +28,13 @@ journalist and senior data producer for [CBC News](https://www.cbc.ca/news).
 To install the library, you can use the following commands:
 
 ```bash
-# DENO
+# Deno
 deno add jsr:@nshiab/journalism-web-scraping
 
-# NODE.JS
+# Node
 npm i @nshiab/journalism-web-scraping
 
-# BUN
+# Bun
 bun add @nshiab/journalism-web-scraping
 ```
 
