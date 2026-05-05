@@ -3,7 +3,7 @@
   "specifiers": {
     "jsr:@std/assert@*": "1.0.16",
     "jsr:@std/internal@^1.0.12": "1.0.12",
-    "npm:adm-zip@~0.5.16": "0.5.16",
+    "npm:adm-zip@~0.5.17": "0.5.17",
     "npm:cheerio@^1.2.0": "1.2.0",
     "npm:d3-dsv@^3.0.1": "3.0.1"
   },
@@ -19,8 +19,8 @@
     }
   },
   "npm": {
-    "adm-zip@0.5.16": {
-      "integrity": "sha512-TGw5yVi4saajsSEgz25grObGHEUaDrniwvA2qwSC060KfqGPdglhvPMA2lPIoxs3PQIItj2iag35fONcQqgUaQ=="
+    "adm-zip@0.5.17": {
+      "integrity": "sha512-+Ut8d9LLqwEvHHJl1+PIHqoyDxFgVN847JTVM3Izi3xHDWPE4UtzzXysMZQs64DMcrJfBeS/uoEP4AD3HQHnQQ=="
     },
     "boolbase@1.0.0": {
       "integrity": "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="
@@ -180,7 +180,7 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:adm-zip@~0.5.16",
+      "npm:adm-zip@~0.5.17",
       "npm:cheerio@^1.2.0",
       "npm:d3-dsv@^3.0.1"
     ]

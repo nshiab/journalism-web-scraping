@@ -28,13 +28,28 @@ To install the library, you can use the following commands:
 
 ```bash
 # DENO
-deno install jsr:@nshiab/journalism-web-scraping
+deno add jsr:@nshiab/journalism-web-scraping
 
 # NODE.JS
-npx jsr add @nshiab/journalism-web-scraping
+npm i @nshiab/journalism-web-scraping
 
 # BUN
-bunx jsr add @nshiab/journalism-web-scraping
+bun add @nshiab/journalism-web-scraping
+```
+
+To quickly set up a data project with essential folders, configurations, and
+documentation for AI agents, you can use
+[@nshiab/setup-data-project](https://github.com/nshiab/setup-data-project).
+
+```bash
+# Deno
+deno run -A jsr:@nshiab/setup-data-project
+
+# Node
+npx @nshiab/setup-data-project
+
+# Bun
+bunx @nshiab/setup-data-project
 ```
 
 If you wish to contribute, please check the

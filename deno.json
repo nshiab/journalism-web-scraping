@@ -1,6 +1,6 @@
 {
   "name": "@nshiab/journalism-web-scraping",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Useful TypeScript functions for journalism projects. This library focuses on functions that easily download data or files from the web.",
   "repository": "https://github.com/nshiab/journalism-web-scraping",
   "license": "MIT",
@@ -27,7 +27,7 @@
   },
   "nodeModulesDir": "auto",
   "imports": {
-    "adm-zip": "npm:adm-zip@^0.5.16",
+    "adm-zip": "npm:adm-zip@^0.5.17",
     "cheerio": "npm:cheerio@^1.2.0",
     "d3-dsv": "npm:d3-dsv@^3.0.1"
   },
