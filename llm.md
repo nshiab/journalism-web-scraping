@@ -1,21 +1,21 @@
-# The Journalism library
+# The Journalism library (web scraping functions)
 
 To install the library with Deno, use:
 
 ```bash
-deno add jsr:@nshiab/journalism
+deno add jsr:@nshiab/journalism-web-scraping
 ```
 
 To install the library with Node.js, use:
 
 ```bash
-npx jsr add @nshiab/journalism
+npm i @nshiab/journalism-web-scraping
 ```
 
 To import a function, use:
 
 ```ts
-import { functionName } from "@nshiab/journalism";
+import { functionName } from "@nshiab/journalism-web-scraping";
 ```
 
 ## downloadFile
