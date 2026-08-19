@@ -36,6 +36,5 @@ export default async function downloadFile(
   if (res.body === null) {
     throw new Error("Response body is null");
   }
-  //@ts-expect-error Different types between Node and Deno?
   await finished(Readable.fromWeb(res.body).pipe(fileStream));
 }
