@@ -1,6 +1,5 @@
-import AdmZip from "adm-zip";
-import { csvParse, type DSVRowArray } from "d3-dsv";
-import { Buffer } from "node:buffer";
+import { csvParse } from "../internal/csv.ts";
+import { extractZipEntry } from "../internal/zip.ts";
 
 /**
  * Retrieves tabular data from Statistics Canada's website using a provided Product ID (PID). This function automates the process of fetching, unzipping, and parsing the CSV data directly from StatCan's API, making it easy to integrate official Canadian statistics into applications or analyses.
@@ -48,7 +47,7 @@ export default async function getStatCanTable(
     returnRawCSV?: boolean;
     debug?: boolean;
   } = {},
-): Promise<string | DSVRowArray<string>> {
+): Promise<string | Array<Record<string, string>>> {
   const lang = options.lang ?? "en";
 
   if (pid.length > 8) {
@@ -71,23 +70,18 @@ export default async function getStatCanTable(
   options.debug && console.log(`Fetching ${zippedCsvUrl.object}`);
 
   const response = await fetch(zippedCsvUrl.object);
-  const zipBuffer = Buffer.from(await response.arrayBuffer());
-  const zip = new AdmZip(zipBuffer);
-  const zipEntries = zip.getEntries();
-  const csvEntry = zipEntries.find((d: { entryName: string }) =>
-    d.entryName === `${pid}.csv`
-  );
-  if (csvEntry === undefined) {
+  const zipData = new Uint8Array(await response.arrayBuffer());
+  const csvData = extractZipEntry(zipData, `${pid}.csv`);
+  if (csvData === undefined) {
     throw new Error(`No ${pid}.csv in the zipped file.`);
   }
-  const csv = csvEntry.getData().toString().replace(/\uFEFF/g, "");
+  const csv = new TextDecoder().decode(csvData).replace(/\uFEFF/g, "");
 
   if (options.returnRawCSV) {
     return csv;
   }
 
   const data = csvParse(csv);
-  delete data["columns" as unknown as number];
 
   options.debug &&
     console.log("colums:", JSON.stringify(Object.keys(data[0])));

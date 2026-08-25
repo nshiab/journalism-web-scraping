@@ -1,5 +1,5 @@
 import { load } from "cheerio";
-import { csvFormatRow, csvParse, type DSVRowArray } from "d3-dsv";
+import { csvFormatRow, csvParse } from "../internal/csv.ts";
 
 /**
  * Extracts tabular data from an HTML table from a given URL or an HTML string and returns it as an array of objects. This function is particularly useful for scraping structured data from web pages.
@@ -45,7 +45,7 @@ export default async function getHtmlTable(
     selector?: string;
     index?: number;
   } = {},
-): Promise<DSVRowArray<string>> {
+): Promise<Array<Record<string, string>>> {
   let html = "";
   if (
     urlOrHtml.startsWith("http://") || urlOrHtml.startsWith("https://")
@@ -93,7 +93,6 @@ export default async function getHtmlTable(
   });
 
   const data = csvParse(csv);
-  delete data["columns" as unknown as number];
 
   return data;
 }

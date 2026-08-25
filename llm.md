@@ -76,7 +76,7 @@ function.
 async function getHtmlTable(
   urlOrHtml: string,
   options?: { selector?: string; index?: number },
-): Promise<DSVRowArray<string>>;
+): Promise<Array<Record<string, string>>>;
 ```
 
 ### Parameters
@@ -138,7 +138,7 @@ It can typically be found in the URL of the table's page (e.g.,
 async function getStatCanTable(
   pid: string,
   options?: { lang?: "en" | "fr"; returnRawCSV?: boolean; debug?: boolean },
-): Promise<string | DSVRowArray<string>>;
+): Promise<string | Array<Record<string, string>>>;
 ```
 
 ### Parameters
