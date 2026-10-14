@@ -42,7 +42,7 @@ export function csvParse(text: string): Array<Record<string, string>> {
 }
 
 /** Format one row according to CSV quoting rules. */
-export function csvFormatRow(row: readonly unknown[]): string {
+export function csvFormatRow(row: readonly string[]): string {
   return row.map(formatValue).join(",");
 }
 
@@ -56,10 +56,7 @@ function objectConverter(columns: readonly string[]) {
   };
 }
 
-function parseRows<T>(
-  text: string,
-  convert: (row: string[], index: number) => T | undefined,
-): T[] {
+function parseRows<T>(text: string, convert: (row: string[], index: number) => T | undefined): T[] {
   const rows: T[] = [];
   let length = text.length;
   let characterIndex = 0;
@@ -83,8 +80,7 @@ function parseRows<T>(
 
     if (text.charCodeAt(start) === QUOTE) {
       while (
-        (characterIndex++ < length &&
-          text.charCodeAt(characterIndex) !== QUOTE) ||
+        (characterIndex++ < length && text.charCodeAt(characterIndex) !== QUOTE) ||
         text.charCodeAt(++characterIndex) === QUOTE
       ) {
         // Find the closing, non-escaped quote.
@@ -101,7 +97,7 @@ function parseRows<T>(
     }
 
     while (characterIndex < length) {
-      character = text.charCodeAt(end = characterIndex++);
+      character = text.charCodeAt((end = characterIndex++));
       if (character === NEWLINE) eol = true;
       else if (character === RETURN) {
         eol = true;
@@ -128,8 +124,6 @@ function parseRows<T>(
   return rows;
 }
 
-function formatValue(value: unknown): string {
-  if (value === null || value === undefined) return "";
-  const string = String(value);
-  return /[",\n\r]/.test(string) ? `"${string.replaceAll('"', '""')}"` : string;
+function formatValue(value: string): string {
+  return /[",\n\r]/.test(value) ? `"${value.replaceAll('"', '""')}"` : value;
 }

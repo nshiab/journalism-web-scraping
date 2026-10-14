@@ -6,12 +6,6 @@ import { csvFormatRow, csvParse } from "../internal/csv.ts";
  *
  * If the page uses JavaScript to render the table, you should fetch the HTML first using a tool like Playwright or Puppeteer and then pass the HTML string to this function.
  *
- * @param urlOrHtml - The URL of the web page containing the HTML table or the HTML string itself.
- * @param options - An optional object to specify how to locate the table.
- * @param options.selector - A CSS selector string to identify the target table on the page. If not provided, the function will look for the first `<table>` element.
- * @param options.index - The 0-based index of the table to select if multiple tables match the `selector`. Defaults to `0`.
- * @returns A Promise that resolves to an array of objects representing the table data, where each row is an object with column headers as keys.
- *
  * @example
  * ```ts
  * // Extract data from the first table on a page via URL
@@ -37,6 +31,13 @@ import { csvFormatRow, csvParse } from "../internal/csv.ts";
  * const dataFromHtml = await getHtmlTable(html);
  * console.log(dataFromHtml);
  * ```
+ * @param urlOrHtml - The URL of the web page containing the HTML table or the HTML string itself.
+ * @param options - An optional object to specify how to locate the table.
+ * @param options.selector - A CSS selector string to identify the target table on the page. If not provided, the function will look for the first `<table>` element.
+ * @param options.index - The 0-based index of the table to select if multiple tables match the `selector`. Defaults to `0`.
+ * @returns A Promise that resolves to an array of objects representing the table data, where each row is an object with column headers as keys.
+ *
+ * @category Web scraping
  */
 
 export default async function getHtmlTable(
@@ -47,9 +48,7 @@ export default async function getHtmlTable(
   } = {},
 ): Promise<Array<Record<string, string>>> {
   let html = "";
-  if (
-    urlOrHtml.startsWith("http://") || urlOrHtml.startsWith("https://")
-  ) {
+  if (urlOrHtml.startsWith("http://") || urlOrHtml.startsWith("https://")) {
     const response = await fetch(urlOrHtml, {
       headers: {
         "User-Agent":
@@ -57,9 +56,7 @@ export default async function getHtmlTable(
       },
     });
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch ${urlOrHtml}: ${response.status} ${response.statusText}`,
-      );
+      throw new Error(`Failed to fetch ${urlOrHtml}: ${response.status} ${response.statusText}`);
     }
     html = await response.text();
   } else {
@@ -74,9 +71,7 @@ export default async function getHtmlTable(
       (i) => i === (typeof options.index === "number" ? options.index : 0),
     );
   } else {
-    table = $("table").filter(
-      (i) => i === (typeof options.index === "number" ? options.index : 0),
-    );
+    table = $("table").filter((i) => i === (typeof options.index === "number" ? options.index : 0));
   }
 
   let csv = "";
