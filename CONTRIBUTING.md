@@ -21,6 +21,9 @@ imports; Vite+ bundles the source into the published JavaScript.
 | `vp test watch test/web-scraping/getHtmlTable.test.ts` | Run one test file and watch for changes during development                       |
 | `npm run all-tests`                                    | Check formatting, lint and types; run tests; build the package and documentation |
 
+Live-network tests run locally by default and are skipped when `CI=true`.
+Offline and mocked tests run in both environments.
+
 The documentation website in `site/`, Markdown pages in `docs/`, and root
 `llm.md` and `llms.txt` files are generated automatically. Do not edit them by hand.
 

@@ -1,7 +1,9 @@
 import { expect, test, vi } from "vite-plus/test";
 import { getStatCanTable } from "../../src/index.ts";
 
-test("should return an array of objects from a table id", async function () {
+const liveTest = test.skipIf(process.env.CI === "true");
+
+liveTest("should return an array of objects from a table id", async function () {
   const data = await getStatCanTable("9810000101");
 
   expect(data).toEqual([
@@ -377,7 +379,7 @@ test("should return an array of objects from a table id", async function () {
     },
   ]);
 });
-test("should return an array of objects from a table id in French", async function () {
+liveTest("should return an array of objects from a table id in French", async function () {
   const data = await getStatCanTable("9810000101", {
     lang: "fr",
   });

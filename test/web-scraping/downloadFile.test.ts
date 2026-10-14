@@ -6,7 +6,9 @@ if (!existsSync("./test/output")) {
   mkdirSync("./test/output");
 }
 
-test("should download a file", async function () {
+const liveTest = test.skipIf(process.env.CI === "true");
+
+liveTest("should download a file", async function () {
   await downloadFile(
     "https://raw.githubusercontent.com/nshiab/journalism-web-scraping/main/test/data/data.json",
     "./test/output/data.json",
