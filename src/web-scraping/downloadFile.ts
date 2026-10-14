@@ -7,9 +7,6 @@ import { finished } from "node:stream/promises";
  *
  * The function uses streams for efficient handling of potentially large files, ensuring that the entire file does not need to be loaded into memory at once.
  *
- * @param url The URL of the file to download. This should be a complete and valid URL (e.g., 'https://example.com/data.zip').
- * @param filePath The absolute or relative local path where the downloaded file should be saved (e.g., './downloads/report.pdf').
- *
  * @example
  * ```ts
  * // Basic usage: Download a CSV file.
@@ -24,13 +21,13 @@ import { finished } from "node:stream/promises";
  * console.log("Image downloaded successfully!");
  * ```
  *
+ * @param url The URL of the file to download. This should be a complete and valid URL (e.g., 'https://example.com/data.zip').
+ * @param filePath The absolute or relative local path where the downloaded file should be saved (e.g., './downloads/report.pdf').
+ *
  * @category Web scraping
  */
 
-export default async function downloadFile(
-  url: string,
-  filePath: string,
-): Promise<void> {
+export default async function downloadFile(url: string, filePath: string): Promise<void> {
   const res = await fetch(url);
   const fileStream = createWriteStream(filePath, { flags: "w" });
   if (res.body === null) {

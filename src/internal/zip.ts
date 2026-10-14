@@ -7,15 +7,8 @@ const MAX_COMMENT_LENGTH = 0xffff;
 const CRC_TABLE = createCrcTable();
 
 /** Extract one entry from a non-ZIP64, single-disk ZIP archive. */
-export function extractZipEntry(
-  archive: Uint8Array,
-  wantedName: string,
-): Uint8Array | undefined {
-  const view = new DataView(
-    archive.buffer,
-    archive.byteOffset,
-    archive.byteLength,
-  );
+export function extractZipEntry(archive: Uint8Array, wantedName: string): Uint8Array | undefined {
+  const view = new DataView(archive.buffer, archive.byteOffset, archive.byteLength);
   const endOffset = findEndOfCentralDirectory(view);
 
   const diskNumber = readUint16(view, endOffset + 4);
@@ -25,24 +18,17 @@ export function extractZipEntry(
   const centralDirectorySize = readUint32(view, endOffset + 12);
   const centralDirectoryOffset = readUint32(view, endOffset + 16);
 
-  if (
-    diskNumber !== 0 || centralDirectoryDisk !== 0 ||
-    entriesOnDisk !== entryCount
-  ) {
+  if (diskNumber !== 0 || centralDirectoryDisk !== 0 || entriesOnDisk !== entryCount) {
     throw new Error("Multi-disk ZIP archives are not supported.");
   }
   if (
-    entryCount === 0xffff || centralDirectorySize === 0xffffffff ||
+    entryCount === 0xffff ||
+    centralDirectorySize === 0xffffffff ||
     centralDirectoryOffset === 0xffffffff
   ) {
     throw new Error("ZIP64 archives are not supported.");
   }
-  assertRange(
-    archive,
-    centralDirectoryOffset,
-    centralDirectorySize,
-    "central directory",
-  );
+  assertRange(archive, centralDirectoryOffset, centralDirectorySize, "central directory");
 
   let offset = centralDirectoryOffset;
   for (let index = 0; index < entryCount; index++) {
@@ -70,7 +56,8 @@ export function extractZipEntry(
         throw new Error(`ZIP entry ${wantedName} is encrypted.`);
       }
       if (
-        compressedSize === 0xffffffff || uncompressedSize === 0xffffffff ||
+        compressedSize === 0xffffffff ||
+        uncompressedSize === 0xffffffff ||
         localHeaderOffset === 0xffffffff
       ) {
         throw new Error("ZIP64 archives are not supported.");
@@ -107,12 +94,7 @@ function extractEntryData(
   compressionMethod: number,
   name: string,
 ): Uint8Array {
-  assertSignature(
-    view,
-    localHeaderOffset,
-    LOCAL_FILE_HEADER,
-    "local file header",
-  );
+  assertSignature(view, localHeaderOffset, LOCAL_FILE_HEADER, "local file header");
   assertRange(archive, localHeaderOffset, 30, "local file header");
   const fileNameLength = readUint16(view, localHeaderOffset + 26);
   const extraLength = readUint16(view, localHeaderOffset + 28);
@@ -124,9 +106,7 @@ function extractEntryData(
   if (compressionMethod === 8) {
     return new Uint8Array(inflateRawSync(compressed));
   }
-  throw new Error(
-    `ZIP entry ${name} uses unsupported compression method ${compressionMethod}.`,
-  );
+  throw new Error(`ZIP entry ${name} uses unsupported compression method ${compressionMethod}.`);
 }
 
 function findEndOfCentralDirectory(view: DataView): number {
@@ -160,8 +140,11 @@ function assertRange(
   description: string,
 ): void {
   if (
-    !Number.isSafeInteger(offset) || !Number.isSafeInteger(length) ||
-    offset < 0 || length < 0 || offset + length > archive.byteLength
+    !Number.isSafeInteger(offset) ||
+    !Number.isSafeInteger(length) ||
+    offset < 0 ||
+    length < 0 ||
+    offset + length > archive.byteLength
   ) {
     throw new Error(`Invalid ZIP archive: truncated ${description}.`);
   }

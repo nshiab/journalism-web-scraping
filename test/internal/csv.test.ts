@@ -1,11 +1,10 @@
-import { assertEquals } from "jsr:@std/assert";
+import { expect, test } from "vite-plus/test";
 import { csvFormatRow, csvParse } from "../../src/internal/csv.ts";
 
-Deno.test("csvParse handles quoted fields, newlines, and missing values", () => {
-  const csv =
-    'name,description,value\r\n"Ada, A.","line one\nline ""two""",3\r\nGrace,,\r\n';
+test("csvParse handles quoted fields, newlines, and missing values", () => {
+  const csv = 'name,description,value\r\n"Ada, A.","line one\nline ""two""",3\r\nGrace,,\r\n';
 
-  assertEquals(csvParse(csv), [
+  expect(csvParse(csv)).toEqual([
     {
       name: "Ada, A.",
       description: 'line one\nline "two"',
@@ -15,15 +14,12 @@ Deno.test("csvParse handles quoted fields, newlines, and missing values", () => 
   ]);
 });
 
-Deno.test("csvParse matches d3-dsv behavior for duplicate columns", () => {
-  assertEquals(csvParse("name,name,missing\nfirst,last"), [
-    { name: "last", missing: "" },
-  ]);
+test("csvParse matches d3-dsv behavior for duplicate columns", () => {
+  expect(csvParse("name,name,missing\nfirst,last")).toEqual([{ name: "last", missing: "" }]);
 });
 
-Deno.test("csvFormatRow quotes CSV control characters", () => {
-  assertEquals(
-    csvFormatRow(["plain", "with,comma", 'with "quote"', "with\nnewline"]),
+test("csvFormatRow quotes CSV control characters", () => {
+  expect(csvFormatRow(["plain", "with,comma", 'with "quote"', "with\nnewline"])).toEqual(
     'plain,"with,comma","with ""quote""","with\nnewline"',
   );
 });

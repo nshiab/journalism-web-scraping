@@ -1,20 +1,18 @@
-import { assertEquals } from "jsr:@std/assert";
+import { expect, test } from "vite-plus/test";
 import { getHtmlTable } from "../../src/index.ts";
 
-Deno.test("should return an array of objects from an HTML table with a selector option", async function () {
+test("should return an array of objects from an HTML table with a selector option", async function () {
   const data = await getHtmlTable(
     "https://www.ourcommons.ca/proactivedisclosure/en/members/2024/1",
     { selector: "#data-table" },
   );
 
-  const normalizedData: Array<Record<string, string>> = data.slice(0, 5).map(
-    (d) => ({
-      ...d,
-      Name: d.Name.replace("  ", " "),
-    }),
-  );
+  const normalizedData: Array<Record<string, string>> = data.slice(0, 5).map((d) => ({
+    ...d,
+    Name: d.Name.replace("  ", " "),
+  }));
 
-  assertEquals(normalizedData, [
+  expect(normalizedData).toEqual([
     {
       Name: "Aboultaif, Ziad",
       Constituency: "Edmonton Manning",
@@ -62,13 +60,13 @@ Deno.test("should return an array of objects from an HTML table with a selector 
     },
   ]);
 });
-Deno.test("should return an array of objects from an HTML table with an index option", async function () {
-  const data = await getHtmlTable(
-    "https://en.wikipedia.org/wiki/Medieval_demography",
-    { index: 0 },
-  );
+test("should return an array of objects from an HTML table with an index option", async function () {
+  const data = await getHtmlTable("https://en.wikipedia.org/wiki/Medieval_demography", {
+    // The first table is a notice box; the population table follows it.
+    index: 1,
+  });
 
-  assertEquals(data, [
+  expect(data).toEqual([
     {
       Year: "1000",
       "Total European population,millions": "56.4",
@@ -143,7 +141,7 @@ Deno.test("should return an array of objects from an HTML table with an index op
     },
   ]);
 });
-Deno.test("should return data from an HTML string", async () => {
+test("should return data from an HTML string", async () => {
   const html = `
     <table>
       <tr>
@@ -157,7 +155,7 @@ Deno.test("should return data from an HTML string", async () => {
     </table>
   `;
   const data = await getHtmlTable(html);
-  assertEquals(data, [
+  expect(data).toEqual([
     {
       "Header 1": "Data 1",
       "Header 2": "Data 2",

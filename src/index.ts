@@ -1,22 +1,19 @@
 /**
- * @module
+ * Download files and extract tables from the web.
  *
- * The Journalism library (web scraping functions)
+ * Install with `npm install @nshiab/journalism-web-scraping`.
+ * Requires Node.js 24.21.0 or later and ES modules.
  *
- * To install the library with Deno, use:
- * ```bash
- * deno add jsr:@nshiab/journalism-web-scraping
- * ```
- *
- * To install the library with Node.js, use:
- * ```bash
- * npm i @nshiab/journalism-web-scraping
- * ```
- *
- * To import a function, use:
+ * @example
  * ```ts
- * import { functionName } from "@nshiab/journalism-web-scraping";
+ * import { getHtmlTable } from "@nshiab/journalism-web-scraping";
+ *
+ * const html = "<table><tr><th>Name</th></tr><tr><td>Ada</td></tr></table>";
+ * const data = await getHtmlTable(html);
+ * console.log(data); // [{ Name: "Ada" }]
  * ```
+ *
+ * @module
  */
 
 import getStatCanTable from "./web-scraping/getStatCanTable.ts";

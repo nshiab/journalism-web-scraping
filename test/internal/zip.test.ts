@@ -1,41 +1,33 @@
-import { assertEquals, assertThrows } from "jsr:@std/assert";
+import { expect, test } from "vite-plus/test";
 import { deflateRawSync } from "node:zlib";
 import { extractZipEntry } from "../../src/internal/zip.ts";
 
-Deno.test("extractZipEntry extracts deflated and stored entries", () => {
+test("extractZipEntry extracts deflated and stored entries", () => {
   const content = new TextEncoder().encode("hello from a ZIP archive");
 
   for (const compressionMethod of [0, 8]) {
     const archive = createZip("data.csv", content, compressionMethod);
-    assertEquals(extractZipEntry(archive, "data.csv"), content);
+    expect(extractZipEntry(archive, "data.csv")).toEqual(content);
   }
 });
 
-Deno.test("extractZipEntry returns undefined when the entry is absent", () => {
+test("extractZipEntry returns undefined when the entry is absent", () => {
   const archive = createZip("data.csv", new Uint8Array([1, 2, 3]), 8);
-  assertEquals(extractZipEntry(archive, "other.csv"), undefined);
+  expect(extractZipEntry(archive, "other.csv")).toEqual(undefined);
 });
 
-Deno.test("extractZipEntry rejects corrupted entry data", () => {
+test("extractZipEntry rejects corrupted entry data", () => {
   const archive = createZip("data.csv", new Uint8Array([1, 2, 3]), 0);
   archive[30 + "data.csv".length] ^= 0xff;
 
-  assertThrows(
-    () => extractZipEntry(archive, "data.csv"),
-    Error,
-    "failed its CRC check",
+  expect(() => extractZipEntry(archive, "data.csv")).toThrowError(
+    new Error("ZIP entry data.csv failed its CRC check."),
   );
 });
 
-function createZip(
-  name: string,
-  content: Uint8Array,
-  compressionMethod: number,
-): Uint8Array {
+function createZip(name: string, content: Uint8Array, compressionMethod: number): Uint8Array {
   const nameBytes = new TextEncoder().encode(name);
-  const compressed = compressionMethod === 8
-    ? deflateRawSync(content)
-    : content;
+  const compressed = compressionMethod === 8 ? deflateRawSync(content) : content;
   const localLength = 30 + nameBytes.length + compressed.length;
   const centralLength = 46 + nameBytes.length;
   const archive = new Uint8Array(localLength + centralLength + 22);

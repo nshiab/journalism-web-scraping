@@ -1,10 +1,10 @@
-import { assertEquals } from "jsr:@std/assert";
+import { expect, test, vi } from "vite-plus/test";
 import { getStatCanTable } from "../../src/index.ts";
 
-Deno.test("should return an array of objects from a table id", async function () {
+test("should return an array of objects from a table id", async function () {
   const data = await getStatCanTable("9810000101");
 
-  assertEquals(data, [
+  expect(data).toEqual([
     {
       REF_DATE: "2021",
       GEO: "Canada",
@@ -13,12 +13,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "36991981",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "35151728",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "5.2",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "16284235",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "15412443",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "5.2",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "16284235",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "15412443",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "5.7",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -40,12 +37,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "510550",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "519716",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "-1.8",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "269184",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "265739",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "-1.8",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "269184",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "265739",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "1.3",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -54,8 +48,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "218673",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "2.1",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "358170.37",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "358170.37",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "1.4",
     },
@@ -67,12 +60,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "154331",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "142907",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "8.0",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "74934",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "71119",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "8.0",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "74934",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "71119",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "5.4",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -81,8 +71,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "59472",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "8.6",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "5681.18",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "5681.18",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "27.2",
     },
@@ -94,12 +83,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "969383",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "923598",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "5.0",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "476007",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "458568",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "5.0",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "476007",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "458568",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "3.8",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -108,8 +94,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "401990",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "6.5",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "52824.71",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "52824.71",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "18.4",
     },
@@ -121,12 +106,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "775610",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "747101",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "3.8",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "366146",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "359721",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "3.8",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "366146",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "359721",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "1.8",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -135,8 +117,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "319773",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "5.6",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "71248.50",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "71248.50",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "10.9",
     },
@@ -148,12 +129,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "8501833",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "8164361",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "4.1",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "4050164",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "3858943",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "4.1",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "4050164",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "3858943",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "5.0",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -175,12 +153,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "14223942",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "13448494",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "5.8",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "5929250",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "5598391",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "5.8",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "5929250",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "5598391",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "5.9",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -189,8 +164,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "5169174",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "6.2",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "892411.76",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "892411.76",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "15.9",
     },
@@ -202,12 +176,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "1342153",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "1278365",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "5.0",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "571528",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "539748",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "5.0",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "571528",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "539748",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "5.9",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -216,8 +187,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "489050",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "5.9",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "540310.19",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "540310.19",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "2.5",
     },
@@ -229,12 +199,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "1132505",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "1098352",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "3.1",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "513725",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "495582",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "3.1",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "513725",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "495582",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "3.7",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -243,8 +210,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "432622",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "3.9",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "577060.40",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "577060.40",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "2.0",
     },
@@ -256,12 +222,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "4262635",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "4067175",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "4.8",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "1772670",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "1654129",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "4.8",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "1772670",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "1654129",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "7.2",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -270,8 +233,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "1527678",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "6.9",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "634658.27",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "634658.27",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "6.7",
     },
@@ -283,12 +245,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "5000879",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "4648055",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "7.6",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "2211694",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "2063417",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "7.6",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "2211694",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "2063417",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "7.2",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -297,8 +256,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "1881969",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "8.5",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "920686.55",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "920686.55",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "5.4",
     },
@@ -310,12 +268,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "40232",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "35874",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "12.1",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "19610",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "17987",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "12.1",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "19610",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "17987",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "9.0",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -324,8 +279,7 @@ Deno.test("should return an array of objects from a table id", async function ()
         "15215",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "12.9",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "472345.44",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "472345.44",
       "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
         "0.1",
     },
@@ -337,12 +291,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "41070",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "41786",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "-1.7",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "17603",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "17666",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "-1.7",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "17603",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "17666",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "-0.4",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -364,12 +315,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "36858",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "35944",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "2.5",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "11720",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "11433",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "2.5",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "11720",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "11433",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "2.5",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -391,12 +339,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -405,10 +350,8 @@ Deno.test("should return an array of objects from a table id", async function ()
         "",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "",
-      "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
-        "",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "",
+      "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]": "",
     },
     {
       REF_DATE: "",
@@ -418,12 +361,9 @@ Deno.test("should return an array of objects from a table id", async function ()
       "Population and dwelling counts (11): Population, 2021 [1]": "",
       Symbols: "",
       "Population and dwelling counts (11): Population, 2016 [2]": "",
-      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]":
-        "",
-      "Population and dwelling counts (11): Total private dwellings, 2021 [4]":
-        "",
-      "Population and dwelling counts (11): Total private dwellings, 2016 [5]":
-        "",
+      "Population and dwelling counts (11): Population percentage change, 2016 to 2021 [3]": "",
+      "Population and dwelling counts (11): Total private dwellings, 2021 [4]": "",
+      "Population and dwelling counts (11): Total private dwellings, 2016 [5]": "",
       "Population and dwelling counts (11): Total private dwellings percentage change, 2016 to 2021 [6]":
         "",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents, 2021 [7]":
@@ -432,34 +372,29 @@ Deno.test("should return an array of objects from a table id", async function ()
         "",
       "Population and dwelling counts (11): Private dwellings occupied by usual residents percentage change, 2016 to 2021 [9]":
         "",
-      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]":
-        "",
-      "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]":
-        "",
+      "Population and dwelling counts (11): Land area in square kilometres, 2021 [10]": "",
+      "Population and dwelling counts (11): Population density per square kilometre, 2021 [11]": "",
     },
   ]);
 });
-Deno.test("should return an array of objects from a table id in French", async function () {
+test("should return an array of objects from a table id in French", async function () {
   const data = await getStatCanTable("9810000101", {
     lang: "fr",
   });
 
-  assertEquals(data, [
+  expect(data).toEqual([
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Canada",
+      GÉO: "Canada",
       DGUID: "2021A000011124",
-      "Coordonnée": "1",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "36991981",
+      Coordonnée: "1",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "36991981",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -475,19 +410,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Terre-Neuve-et-Labrador",
+      GÉO: "Terre-Neuve-et-Labrador",
       DGUID: "2021A000210",
-      "Coordonnée": "2",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "510550",
+      Coordonnée: "2",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "510550",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -503,19 +435,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Île-du-Prince-Édouard",
+      GÉO: "Île-du-Prince-Édouard",
       DGUID: "2021A000211",
-      "Coordonnée": "3",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "154331",
+      Coordonnée: "3",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "154331",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -531,19 +460,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Nouvelle-Écosse",
+      GÉO: "Nouvelle-Écosse",
       DGUID: "2021A000212",
-      "Coordonnée": "4",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "969383",
+      Coordonnée: "4",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "969383",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -559,19 +485,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Nouveau-Brunswick",
+      GÉO: "Nouveau-Brunswick",
       DGUID: "2021A000213",
-      "Coordonnée": "5",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "775610",
+      Coordonnée: "5",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "775610",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -587,19 +510,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Québec",
+      GÉO: "Québec",
       DGUID: "2021A000224",
-      "Coordonnée": "6",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "8501833",
+      Coordonnée: "6",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "8501833",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -615,19 +535,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Ontario",
+      GÉO: "Ontario",
       DGUID: "2021A000235",
-      "Coordonnée": "7",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "14223942",
+      Coordonnée: "7",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "14223942",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -643,19 +560,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Manitoba",
+      GÉO: "Manitoba",
       DGUID: "2021A000246",
-      "Coordonnée": "8",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "1342153",
+      Coordonnée: "8",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "1342153",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -671,19 +585,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Saskatchewan",
+      GÉO: "Saskatchewan",
       DGUID: "2021A000247",
-      "Coordonnée": "9",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "1132505",
+      Coordonnée: "9",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "1132505",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -699,19 +610,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Alberta",
+      GÉO: "Alberta",
       DGUID: "2021A000248",
-      "Coordonnée": "10",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "4262635",
+      Coordonnée: "10",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "4262635",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -727,19 +635,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Colombie-Britannique",
+      GÉO: "Colombie-Britannique",
       DGUID: "2021A000259",
-      "Coordonnée": "11",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "5000879",
+      Coordonnée: "11",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "5000879",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -755,19 +660,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Yukon",
+      GÉO: "Yukon",
       DGUID: "2021A000260",
-      "Coordonnée": "12",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "40232",
+      Coordonnée: "12",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "40232",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -783,19 +685,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Territoires du Nord-Ouest",
+      GÉO: "Territoires du Nord-Ouest",
       DGUID: "2021A000261",
-      "Coordonnée": "13",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "41070",
+      Coordonnée: "13",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "41070",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -811,19 +710,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "2021",
-      "GÉO": "Nunavut",
+      GÉO: "Nunavut",
       DGUID: "2021A000262",
-      "Coordonnée": "14",
-      "Chiffres de population et des logements (11): Population, 2021 [1]":
-        "36858",
+      Coordonnée: "14",
+      "Chiffres de population et des logements (11): Population, 2021 [1]": "36858",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -839,18 +735,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "",
-      "GÉO": "",
+      GÉO: "",
       DGUID: "",
-      "Coordonnée": "",
+      Coordonnée: "",
       "Chiffres de population et des logements (11): Population, 2021 [1]": "",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -866,18 +760,16 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
     {
       "PÉRIODE DE RÉFÉRENCE": "",
-      "GÉO": "",
+      GÉO: "",
       DGUID: "",
-      "Coordonnée": "",
+      Coordonnée: "",
       "Chiffres de population et des logements (11): Population, 2021 [1]": "",
       Symboles: "",
       "Chiffres de population et des logements (11): Population, 2016 [2]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage de la population, 2016 à 2021 [3]":
         "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]":
-        "",
-      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]":
-        "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2021 [4]": "",
+      "Chiffres de population et des logements (11): Total des logements privés, 2016 [5]": "",
       "Chiffres de population et des logements (11): Variation en pourcentage du total des logements privés, 2016 à 2021 [6]":
         "",
       "Chiffres de population et des logements (11): Logements privés occupés par des résidents habituels, 2021 [7]":
@@ -893,3 +785,18 @@ Deno.test("should return an array of objects from a table id in French", async f
     },
   ]);
 });
+
+test.each([null, {}, { object: 123 }])(
+  "rejects Statistics Canada metadata without a download URL: %j",
+  async (metadata) => {
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(Response.json(metadata));
+    try {
+      await expect(getStatCanTable("98100001")).rejects.toThrowError(
+        "Statistics Canada did not return a CSV download URL.",
+      );
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+    } finally {
+      fetchMock.mockRestore();
+    }
+  },
+);
