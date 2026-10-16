@@ -1,8 +1,8 @@
-[**Journalism Web Scraping v2.0.9**](index.md)
+[**Journalism Web Scraping v2.0.10**](index.md)
 
 ***
 
-# Journalism Web Scraping v2.0.9
+# Journalism Web Scraping v2.0.10
 
 Download files and extract tables from the web.
 

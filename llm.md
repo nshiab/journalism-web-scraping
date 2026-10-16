@@ -1,4 +1,4 @@
-**Journalism Web Scraping v2.0.9**
+**Journalism Web Scraping v2.0.10**
 
 ***
 

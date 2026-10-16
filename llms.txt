@@ -1,10 +1,10 @@
-# Journalism Web Scraping v2.0.9
+# Journalism Web Scraping v2.0.10
 
 > Useful TypeScript functions for journalism projects. This library focuses on functions that easily download data or files from the web.
 
-- [README](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.9/README.md): Installation, examples and usage.
+- [README](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.10/README.md): Installation, examples and usage.
 
 ## API
-- [downloadFile](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.9/docs/functions/downloadFile.md): downloadFile function
-- [getHtmlTable](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.9/docs/functions/getHtmlTable.md): getHtmlTable function
-- [getStatCanTable](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.9/docs/functions/getStatCanTable.md): getStatCanTable function
+- [downloadFile](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.10/docs/functions/downloadFile.md): downloadFile function
+- [getHtmlTable](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.10/docs/functions/getHtmlTable.md): getHtmlTable function
+- [getStatCanTable](https://raw.githubusercontent.com/nshiab/journalism-web-scraping/v2.0.10/docs/functions/getStatCanTable.md): getStatCanTable function
