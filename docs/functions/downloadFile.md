@@ -1,4 +1,4 @@
-[**Journalism Web Scraping v2.0.8**](../index.md)
+[**Journalism Web Scraping v2.0.9**](../index.md)
 
 ***
 
